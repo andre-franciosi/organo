@@ -1,3 +1,4 @@
+import Botao from "../Botao"
 import CampoTexto from "../CampoTexto"
 import ListaSuspensa from "../ListaSuspensa"
 import "./Formulario.css"
@@ -12,14 +13,19 @@ function Formulario() {
         'Inglaterra'
     ]
 
+    const aoSalvar = (evento) => {
+        evento.preventDefault()
+    }
+
     return (
         <section className="formulario">
-            <form>
+            <form onSubmit={aoSalvar}>
                 <h2> Preencha os dados para criar um card</h2>
-                <CampoTexto label="Nome" placeholder="Digite seu nome" />
-                <CampoTexto label="Posição" placeholder="Digite seu cargo" />
-                <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
-                <ListaSuspensa label = "País" itens={paises}/>
+                <CampoTexto obrigatorio={true} label="Nome" placeholder="Digite seu nome" />
+                <CampoTexto obrigatorio={true} label="Posição" placeholder="Digite seu cargo" />
+                <CampoTexto obrigatorio={true} label="Imagem" placeholder="Digite o endereço da imagem" />
+                <ListaSuspensa obrigatorio={true} label = "País" itens={paises}/>
+                <Botao>Criar Card</Botao>
             </form>
         </section>
     )
