@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 
 function App() {
+
+  const [jogadores, setJogadores] = useState([])
+
+  const aoNovoJogadorAdicionado = (jogador) => {
+    console.log(jogador)
+    setJogadores(...jogadores, jogador)
+  }
+
+
   return (
     <div className="App">
       <Banner/>
-      <Formulario/>
+      <Formulario aoJogadorCadastrado={jogador => aoNovoJogadorAdicionado(jogador)}/> 
     </div>
   );
 }
